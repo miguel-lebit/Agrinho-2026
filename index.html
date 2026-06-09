@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Shield of the World - Aprenda como combater o desmatamento e adotar práticas sustentáveis">
+    <title>Shield of the World - Proteja o Futuro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- Botão de Acessibilidade Fixo -->
+    <div class="botao-acessibilidade" id="botaoAcessibilidade">
+        <button class="acessibilidade-btn" id="btnAcessibilidade" aria-label="Menu de acessibilidade">♿ Acessibilidade</button>
+        <div class="menu-acessibilidade" id="menuAcessibilidade" style="display: none;">
+            <button id="aumentarFonte" aria-label="Aumentar fonte">A+ Aumentar fonte</button>
+            <button id="diminuirFonte" aria-label="Diminuir fonte">A- Diminuir fonte</button>
+            <button id="altoContraste" aria-label="Ativar alto contraste">◐ Alto contraste</button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>🛡️ Shield of the World</h1>
+                <p>Protegendo o futuro, um passo de cada vez</p>
+            </div>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#problema">Problema</a></li>
+                    <li><a href="#dicas">Dicas Sustentáveis</a></li>
+                    <li><a href="#conclusao">Conclusão</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Seção Início -->
+        <section id="inicio" class="secao">
+            <div class="container">
+                <div class="hero">
+                    <h2>Agro forte, futuro sustentável</h2>
+                    <p>Equilíbrio entre produção e meio ambiente</p>
+                    <a href="#dicas" class="btn-principal">🌿 Descubra como ajudar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre o tema -->
+        <section id="sobre" class="secao">
+            <div class="container">
+                <h2>Sobre o Projeto</h2>
+                <div class="card">
+                    <p><strong>Shield of the World</strong> é um projeto criado para conscientizar sobre o desmatamento e ensinar formas práticas de proteger o meio ambiente. Assim como um escudo defende, nosso site quer defender o planeta para as futuras gerações.</p>
+                    <p>Os recursos naturais são finitos. Com o desmatamento, o fim desses recursos chega ainda mais rápido. Precisamos agir agora!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Problema ambiental -->
+        <section id="problema" class="secao fundo-claro">
+            <div class="container">
+                <h2>O Problema: Desmatamento</h2>
+                <div class="grid-2-colunas">
+                    <div class="card">
+                        <h3>📊 Dados preocupantes</h3>
+                        <div class="grafico-simples" id="graficoDesmatamento">
+                            <div class="barra-container">
+                                <span>Amazônia (2023)</span>
+                                <div class="barra"><div class="barra-preenchimento" style="width: 85%">85%</div></div>
+                            </div>
+                            <div class="barra-container">
+                                <span>Cerrado (2023)</span>
+                                <div class="barra"><div class="barra-preenchimento" style="width: 45%">45%</div></div>
+                            </div>
+                            <div class="barra-container">
+                                <span>Mata Atlântica</span>
+                                <div class="barra"><div class="barra-preenchimento" style="width: 28%">28%</div></div>
+                            </div>
+                        </div>
+                        <p class="fonte-pequena">*Dados aproximados sobre desmatamento nas regiões brasileiras</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌍 Impactos do desmatamento</h3>
+                        <ul>
+                            <li>Perda da biodiversidade</li>
+                            <li>Mudanças climáticas</li>
+                            <li>Contaminação dos rios</li>
+                            <li>Empobrecimento do solo</li>
+                            <li>Secas e enchentes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Gerador de Dicas Sustentáveis (Funcionalidade Principal) -->
+        <section id="dicas" class="secao">
+            <div class="container">
+                <h2>💚 Gerador de Dicas Sustentáveis</h2>
+                <p class="subtitulo">Clique em uma categoria abaixo e receba dicas para combater o desmatamento e proteger o planeta!</p>
+                
+                <!-- Botões de categorias -->
+                <div class="botoes-categoria">
+                    <button class="btn-categoria" data-categoria="agua">💧 Água</button>
+                    <button class="btn-categoria" data-categoria="desmatamento">🌳 Desmatamento</button>
+                    <button class="btn-categoria" data-categoria="reciclagem">♻️ Reciclagem</button>
+                    <button class="btn-categoria" data-categoria="solo">🌱 Solo</button>
+                </div>
+
+                <!-- Área onde o conteúdo será exibido -->
+                <div id="conteudoDicas" class="conteudo-dicas">
+                    <p class="dica-inicial">👆 Clique em um botão acima para ver dicas, vídeos e informações!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Conclusão -->
+        <section id="conclusao" class="secao fundo-escuro">
+            <div class="container">
+                <h2>Conclusão</h2>
+                <div class="card-conclusao">
+                    <p>O equilíbrio entre a produção agrícola e o meio ambiente é possível! Com pequenas atitudes no dia a dia, podemos proteger nossas florestas, economizar água e garantir um futuro sustentável para todos.</p>
+                    <p><strong>Lembre-se:</strong> Você também pode ser um escudo para o mundo! 🌎🛡️</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Shield of the World - Concurso Agrinho</p>
+            <p>Equilíbrio entre produção e meio ambiente</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
