@@ -14,9 +14,12 @@ btnAcessibilidade.addEventListener('click', () => {
 });
 
 // Fechar menu se clicar fora
+const botaoAcessibilidade = document.querySelector('.botao-acessibilidade');
 document.addEventListener('click', (event) => {
-    if (!botaoAcessibilidade.contains(event.target)) {
-        menuAcessibilidade.style.display = 'none';
+    if (botaoAcessibilidade && !botaoAcessibilidade.contains(event.target)) {
+        if (menuAcessibilidade) {
+            menuAcessibilidade.style.display = 'none';
+        }
     }
 });
 
@@ -29,39 +32,47 @@ function aplicarTamanhoFonte(tamanho) {
 }
 
 // Botão aumentar fonte
-document.getElementById('aumentarFonte').addEventListener('click', () => {
-    if (tamanhoFonteAtual < 22) {
-        aplicarTamanhoFonte(tamanhoFonteAtual + 2);
-    } else {
-        alert('A fonte já está no tamanho máximo!');
-    }
-});
+const aumentarFonteBtn = document.getElementById('aumentarFonte');
+if (aumentarFonteBtn) {
+    aumentarFonteBtn.addEventListener('click', () => {
+        if (tamanhoFonteAtual < 22) {
+            aplicarTamanhoFonte(tamanhoFonteAtual + 2);
+        } else {
+            alert('A fonte já está no tamanho máximo!');
+        }
+    });
+}
 
 // Botão diminuir fonte
-document.getElementById('diminuirFonte').addEventListener('click', () => {
-    if (tamanhoFonteAtual > 12) {
-        aplicarTamanhoFonte(tamanhoFonteAtual - 2);
-    } else {
-        alert('A fonte já está no tamanho mínimo!');
-    }
-});
+const diminuirFonteBtn = document.getElementById('diminuirFonte');
+if (diminuirFonteBtn) {
+    diminuirFonteBtn.addEventListener('click', () => {
+        if (tamanhoFonteAtual > 12) {
+            aplicarTamanhoFonte(tamanhoFonteAtual - 2);
+        } else {
+            alert('A fonte já está no tamanho mínimo!');
+        }
+    });
+}
 
 // === Função para alto contraste ===
 let contrasteAtivo = false;
-
-document.getElementById('altoContraste').addEventListener('click', () => {
-    if (!contrasteAtivo) {
-        document.body.classList.add('alto-contraste');
-        contrasteAtivo = true;
-    } else {
-        document.body.classList.remove('alto-contraste');
-        contrasteAtivo = false;
-    }
-});
+const altoContrasteBtn = document.getElementById('altoContraste');
+if (altoContrasteBtn) {
+    altoContrasteBtn.addEventListener('click', () => {
+        if (!contrasteAtivo) {
+            document.body.classList.add('alto-contraste');
+            contrasteAtivo = true;
+        } else {
+            document.body.classList.remove('alto-contraste');
+            contrasteAtivo = false;
+        }
+    });
+}
 
 // ===== FUNCIONALIDADE PRINCIPAL: GERADOR DE DICAS SUSTENTÁVEIS =====
 
-// Base de dados com as dicas para cada categoria
+// Base de dados com as dicas para cada categoria (COM VÍDEOS REAIS)
 const dicasData = {
     agua: {
         titulo: "💧 Dicas para economizar água",
@@ -69,6 +80,191 @@ const dicasData = {
         lista: [
             "Reutilize a água da lavagem de alimentos para regar plantas",
             "Instale sistemas de captação de água da chuva",
+            "Use irrigação por gotejamento na agricultura (economiza até 60% de água)",
+            "Conserte vazamentos rapidamente",
+            "Não lave calçadas com mangueira - use vassoura"
+        ],
+        videoUrl: "https://www.youtube.com/embed/XdUzDtam2BI", // Vídeo: Como economizar água na agricultura
+        tabela: [
+            { acao: "Fechar torneira ao escovar os dentes", economia: "12 litros por minuto" },
+            { acao: "Banho de 5 minutos (em vez de 15)", economia: "60 litros por banho" },
+            { acao: "Irrigação por gotejamento", economia: "60% de água na lavoura" },
+            { acao: "Reúso da água da chuva", economia: "Até 50% da conta" }
+        ],
+        grafico: [
+            { item: "Torneira aberta 10min", valor: 120 },
+            { item: "Gotejamento na planta", valor: 48 },
+            { item: "Chuva captada/mês", valor: 500 },
+            { item: "Banho longo 15min", valor: 135 }
+        ]
+    },
+    desmatamento: {
+        titulo: "🌳 Como combater o desmatamento",
+        texto: "O desmatamento é uma das maiores ameaças ao nosso planeta. Você pode ajudar com essas ações:",
+        lista: [
+            "Plante árvores nativas da sua região",
+            "Compre produtos com certificação de origem sustentável",
+            "Denuncie queimadas e desmatamento ilegal (Disque 0800 61 8080)",
+            "Prefira alimentos orgânicos (não incentivam desmatamento)",
+            "Reduza o consumo de carne (pecuária causa desmatamento)"
+        ],
+        videoUrl: "https://www.youtube.com/embed/cBwGj8e8YAY", // Vídeo: Desmatamento na Amazônia - causas e soluções
+        tabela: [
+            { acao: "Plantações ilegais", impacto: "Alto desmatamento" },
+            { acao: "Agricultura sustentável", impacto: "Baixo desmatamento" },
+            { acao: "Pecuária extensiva", impacto: "Muito alto" },
+            { acao: "Reflorestamento", impacto: "Positivo (+ árvores)" }
+        ],
+        grafico: [
+            { item: "Desmatamento 2010", valor: 7000 },
+            { item: "Desmatamento 2015", valor: 6200 },
+            { item: "Desmatamento 2020", valor: 8500 },
+            { item: "Desmatamento 2023", valor: 9000 }
+        ]
+    },
+    reciclagem: {
+        titulo: "♻️ Dicas de reciclagem e redução de lixo",
+        texto: "Reciclar reduz a necessidade de desmatar para novas plantações e extrações. Veja como:",
+        lista: [
+            "Separe o lixo orgânico do reciclável",
+            "Lave as embalagens antes de reciclar",
+            "Compre produtos com embalagens retornáveis",
+            "Faça compostagem com restos de comida",
+            "Evite plásticos descartáveis"
+        ],
+        videoUrl: "https://www.youtube.com/embed/WsF_lNwlODw", // Vídeo: Como reciclar corretamente
+        tabela: [
+            { acao: "Reciclar 1 tonelada de papel", impacto: "Salva 20 árvores" },
+            { acao: "Reciclar alumínio", impacto: "Economiza 95% de energia" },
+            { acao: "Compostagem", impacto: "Reduz lixo em 50%" },
+            { acao: "Plástico reciclado", impacto: "Menos petróleo usado" }
+        ],
+        grafico: [
+            { item: "Papel reciclado", valor: 45 },
+            { item: "Plástico reciclado", valor: 25 },
+            { item: "Vidro reciclado", valor: 60 },
+            { item: "Metal reciclado", valor: 70 }
+        ]
+    },
+    solo: {
+        titulo: "🌱 Cuidando do solo (agricultura sustentável)",
+        texto: "Um solo saudável significa plantas saudáveis e menos necessidade de desmatar novas áreas:",
+        lista: [
+            "Faça rotação de culturas para não esgotar o solo",
+            "Use adubo orgânico (compostagem)",
+            "Evite queimadas - elas destroem a vida do solo",
+            "Plante árvores ao redor das lavouras (quebra-vento)",
+            "Use cobertura morta para proteger o solo"
+        ],
+        videoUrl: "https://www.youtube.com/embed/J1rVBmrXlH0", // Vídeo: Agricultura sustentável e conservação do solo
+        tabela: [
+            { acao: "Rotação de culturas", beneficio: "Solo mais fértil" },
+            { acao: "Adubo orgânico", beneficio: "Sem agrotóxicos" },
+            { acao: "Plantio direto", beneficio: "Menos erosão" },
+            { acao: "Cobertura morta", beneficio: "Retém umidade" }
+        ],
+        grafico: [
+            { item: "Solo saudável", valor: 85 },
+            { item: "Solo degradado", valor: 30 },
+            { item: "Com compostagem", valor: 90 },
+            { item: "Com queimadas", valor: 20 }
+        ]
+    }
+};
+
+// Função para gerar o conteúdo HTML das dicas (com vídeos funcionando)
+function gerarConteudoDicas(categoria) {
+    const dados = dicasData[categoria];
+    if (!dados) return '<p>Erro: categoria não encontrada</p>';
+    
+    // Gerar lista de dicas
+    let listaHtml = '<ul style="margin: 15px 0 15px 20px;">';
+    dados.lista.forEach(item => {
+        listaHtml += `<li style="margin: 8px 0;">${item}</li>`;
+    });
+    listaHtml += '</ul>';
+    
+    // Gerar tabela
+    let tabelaHtml = `
+        <table class="tabela-dicas">
+            <thead>
+                <tr><th>Ação / Prática</th><th>Impacto / Benefício</th></tr>
+            </thead>
+            <tbody>
+    `;
+    dados.tabela.forEach(item => {
+        tabelaHtml += `<tr><td>${item.acao}</td><td>${item.impacto || item.beneficio}</td></tr>`;
+    });
+    tabelaHtml += '</tbody></table>';
+    
+    // Gerar gráfico de barras simples
+    let graficoHtml = '<div class="grafico-barras-dicas" style="margin-top: 25px;"><h4>📊 Dados comparativos</h4>';
+    const maxValor = Math.max(...dados.grafico.map(g => g.valor));
+    dados.grafico.forEach(item => {
+        const porcentagem = (item.valor / maxValor) * 100;
+        graficoHtml += `
+            <div class="barra-container" style="margin: 12px 0;">
+                <span style="display: block; margin-bottom: 5px; font-weight: bold;">${item.item}</span>
+                <div style="background-color: #ddd; border-radius: 10px; overflow: hidden;">
+                    <div style="background: linear-gradient(90deg, #00aaff, #0066aa); color: white; padding: 6px 12px; text-align: right; border-radius: 10px; width: ${porcentagem}%;">${item.valor}</div>
+                </div>
+            </div>
+        `;
+    });
+    graficoHtml += '</div>';
+    
+    // Montar HTML completo
+    const htmlCompleto = `
+        <h3 style="color: #0a0a2a; margin-bottom: 15px;">${dados.titulo}</h3>
+        <div class="dica-texto">
+            <p><strong>${dados.texto}</strong></p>
+            ${listaHtml}
+        </div>
+        
+        <div style="margin: 25px 0; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+            <iframe 
+                src="${dados.videoUrl}" 
+                title="Vídeo sobre ${dados.titulo}"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            </iframe>
+        </div>
+        
+        <h4 style="margin: 20px 0 10px 0;">📋 Tabela comparativa</h4>
+        ${tabelaHtml}
+        
+        ${graficoHtml}
+        
+        <p style="margin-top: 25px; font-style: italic; text-align: center; padding: 15px; background-color: #e8f4f8; border-radius: 10px;">
+            ✨ Pequenas atitudes mudam o mundo! Compartilhe essas dicas.
+        </p>
+    `;
+    
+    return htmlCompleto;
+}
+
+// Adicionar evento de clique em todos os botões de categoria
+const botoesCategoria = document.querySelectorAll('.btn-categoria');
+const conteudoDicasDiv = document.getElementById('conteudoDicas');
+
+if (botoesCategoria.length > 0 && conteudoDicasDiv) {
+    botoesCategoria.forEach(botao => {
+        botao.addEventListener('click', () => {
+            const categoria = botao.getAttribute('data-categoria');
+            const novoConteudo = gerarConteudoDicas(categoria);
+            conteudoDicasDiv.innerHTML = novoConteudo;
+            
+            // Rolar suavemente até a área de conteúdo
+            conteudoDicasDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+}
+
+// ===== MENSAGEM DE BOAS-VINDAS NO CONSOLE =====
+console.log('🛡️ Shield of the World - Site carregado com sucesso!');
+console.log('🌿 Ajude a combater o desmatamento com pequenas atitudes.');            "Instale sistemas de captação de água da chuva",
             "Use irrigação por gotejamento na agricultura (economiza até 60% de água)",
             "Conserte vazamentos rapidamente",
             "Não lave calçadas com mangueira - use vassoura"
